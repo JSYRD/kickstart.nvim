@@ -292,7 +292,6 @@ require('lazy').setup({
       damping_insert_mode = 0.9,
       distance_stop_animating = 0.3,
       time_interval = 7,
-
     },
   },
   {
@@ -545,7 +544,7 @@ require('lazy').setup({
       --    That is to say, every time a new file is opened that is associated with
       --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
       --    function will be executed to configure the current buffer
-      vim.lsp.enable 'jedi_language_server'
+      -- vim.lsp.enable 'jedi_language_server'
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
@@ -859,7 +858,7 @@ require('lazy').setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        preset = 'super-tab',
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -999,7 +998,7 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
+  -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
