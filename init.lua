@@ -908,11 +908,17 @@ require('lazy').setup({
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       ---@diagnostic disable-next-line: missing-fields
-      require('tokyonight').setup {
+      require('tokyonight').setup({
         styles = {
           comments = { italic = false }, -- Disable italics in comments
         },
-      }
+        on_highlights = function(highlights, colors)
+          highlights.DapStoppedLine = {
+            bg = "#4C4C19",
+            fg = colors.fg,
+          }
+        end,
+      })
 
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
@@ -964,6 +970,7 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    version = 'v0.9.3',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
@@ -996,10 +1003,10 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
-  require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.lint',
+  -- require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
